@@ -17,7 +17,9 @@ import javax.inject.Inject
 class MainViewModel
 @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
     val response: MutableState<ApiState> = mutableStateOf(ApiState.Empty)
-
+     private set
+//To use mutableState with viewmodel, define mutableState with private setter inside viewmodel
+// By doing above we can read the mutable state from outside of viewmodel but not update it. To update create a public function inside viewmodel
     init {
         getPost()
     }
